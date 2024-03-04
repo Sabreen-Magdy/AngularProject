@@ -1,0 +1,28 @@
+<div *ngIf="product; else notFound" class="col-sm-6 col-lg-4 mb-4">
+  <div class="card">
+    <img [src]="product?.image" width="100%" height="100%" />
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ product?.name | uppercase }}</li>
+        <li class="list-group-item">{{ product?.description }}</li>
+        <li class="list-group-item">$ {{ product?.price }}</li>
+        <li *ngIf="product?.onSale" class="list-group-item">
+          {{ product?.discount }} %
+        </li>
+        <li *ngIf="product?.quantity == 0" class="list-group-item">Sold Out</li>
+      </ul>
+      <button
+        [disabled]="product?.quantity == 0"
+        type="button"
+        class="btn btn-success"
+      >
+        Add to Card
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #notFound>
+  <div class="bg-dark text-light text-center p-5 rounded">
+    <h1>This Id is not valid</h1>
+  </div>
+</ng-template>
