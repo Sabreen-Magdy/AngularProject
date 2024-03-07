@@ -7,15 +7,18 @@ import { ProductFormComponent } from './components/core/product-form/product-for
 import { LoginComponent } from './components/core/login/login.component';
 import { ContactsComponent } from './components/core/contacts/contacts.component';
 import { NotfoundComponent } from './components/core/notfound/notfound.component';
+import { authenticationGuard } from './services/authentication.guard';
+import { RegisterComponent } from './components/core/register/register.component';
 
 const routes: Routes = [
   {path:"" , redirectTo:"home", pathMatch:"full"},
   {path:"home" , component:HomeComponent},
-  {path:"products" , component:ProductsComponent},
-  {path:"products/details/:id" , component:ProductDetailsComponent},
-  {path:"products/add" , component:ProductFormComponent},
-  {path:"products/edit/:id" , component:ProductFormComponent},
+  {path:"products" , component:ProductsComponent ,canActivate:[authenticationGuard]},
+  {path:"products/details/:id" , component:ProductDetailsComponent,canActivate:[authenticationGuard]},
+  {path:"products/add" , component:ProductFormComponent,canActivate:[authenticationGuard]},
+  {path:"products/edit/:id" , component:ProductFormComponent,canActivate:[authenticationGuard]},
   {path:"login" , component:LoginComponent},
+  {path:"register" , component:RegisterComponent},
   {path:"contacts" , component:ContactsComponent},
   {path:"**" , component:NotfoundComponent}
 ];

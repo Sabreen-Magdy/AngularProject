@@ -5,27 +5,6 @@
   style="width: 1000px; margin: auto"
 >
   <div class="col-md-12">
-    <label for="validationServer03" class="form-label">Product Id</label>
-    <input
-      type="number"
-      class="form-control"
-      id="validationServer03"
-      aria-describedby="validationServer03Feedback"
-      formControlName="id"
-      name="productId"
-      [ngClass]="{
-        'is-valid': productIdControl?.valid,
-        'is-invalid': productIdControl?.errors && productIdControl?.touched
-      }"
-    />
-    <div id="validationServer03Feedback" class="valid-feedback">good work!</div>
-    <div class="invalid-feedback">
-      <ng-container *ngIf="productIdControl?.hasError('required')"
-        >product price is required.</ng-container
-      >
-    </div>
-  </div>
-  <div class="col-md-12">
     <label for="validationServer01" class="form-label">Product Name</label>
     <input
       type="text"

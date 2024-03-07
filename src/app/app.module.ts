@@ -13,6 +13,8 @@ import { ContactsComponent } from './components/core/contacts/contacts.component
 import { LoginComponent } from './components/core/login/login.component';
 import { NotfoundComponent } from './components/core/notfound/notfound.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/core/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductFormComponent,
     ContactsComponent,
     LoginComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,8 +11,8 @@
         <th scope="col">Discount</th>
         <th scope="col">Quantity</th>
         <th scope="col">Details</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
+        <th scope="col" *ngIf="IsAdmin()">Update</th>
+        <th scope="col" *ngIf="IsAdmin()">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -40,16 +40,18 @@
           ></a>
         </td>
         <td>
-          <a
-            [routerLink]="['/products/edit', product.id]"
-            routerLinkActive="router-link-active"
+          <a *ngIf="IsAdmin()" [routerLink]="['/products/edit', product.id]"
             ><i class="bi bi-pencil-square text-primary"></i
           ></a>
         </td>
         <td>
-          <a (click)="deleteProduct(product.id)"
-            ><i class="bi bi-archive text-danger"></i
-          ></a>
+          <a
+            *ngIf="IsAdmin()"
+            (click)="deleteProduct(product.id)"
+            routerLinkActive="router-link-active"
+          >
+            <i class="bi bi-archive text-danger"></i>
+          </a>
         </td>
       </tr>
     </tbody>

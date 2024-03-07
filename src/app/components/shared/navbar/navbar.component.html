@@ -24,7 +24,7 @@
             >Home</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="IsLogin()">
           <a
             class="nav-link"
             [routerLink]="['/products']"
@@ -33,7 +33,7 @@
             >Products</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="IsLogin() && IsAdmin()">
           <a
             class="nav-link"
             [routerLink]="['/products/add']"
@@ -51,7 +51,7 @@
             >Contact Us</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!IsLogin()">
           <a
             class="nav-link"
             [routerLink]="['/login']"
@@ -59,6 +59,18 @@
             [routerLinkActiveOptions]="{ exact: true }"
             >Login</a
           >
+        </li>
+        <li class="nav-item" *ngIf="!IsLogin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/register']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Register</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="IsLogin()">
+          <a class="nav-link" (click)="LogOut()">Logout</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
